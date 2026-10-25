@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "clusterprojectbackrooms:block/yellow_wallpaper"
+  }
+}

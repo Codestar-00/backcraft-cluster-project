@@ -1,5 +1,7 @@
 package com.codestar.backrooms;
 
+import com.codestar.backrooms.block.ModBlocks;
+import com.codestar.backrooms.item.ModItems;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -47,6 +49,9 @@ public class BackroomsMod {
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
 
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
+
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
 
@@ -60,7 +65,14 @@ public class BackroomsMod {
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
+        if(event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
+            event.accept(ModItems.ALMONDWATER);
+        }
 
+        if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+            event.accept(ModBlocks.LEVEL_0_WALLPAPER);
+            event.accept(ModBlocks.LEVEL_0_CARPET);
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
