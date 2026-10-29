@@ -27,7 +27,12 @@ sourceSets.main.resources {
 }
 
 repositories {
-    // Add here additional repositories if required by some of the dependencies below.
+    exclusiveContent {
+        forRepository {
+            maven {url = 'https://maven.blamejared.com'}
+        }
+        filter {includeGroup 'mezz.jei'}
+    }
 }
 
 base {
@@ -137,6 +142,15 @@ dependencies {
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+
+    // Compile against integration APIs, and load the complete mods in dev runs.
+    compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
+    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
+
+    // Use -Pexclude_optional_mods to verify that the mod also starts by itself.
+    if (!project.hasProperty('exclude_optional_mods')) {
+        runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+    }
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

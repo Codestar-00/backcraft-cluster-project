@@ -19,11 +19,11 @@ public class ModBlocks {
 
     public static  final DeferredBlock<Block> LEVEL_0_WALLPAPER = registerBlock("yellow_wallpaper",
             () -> new Block(BlockBehaviour.Properties.of()
-                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.WOOL)));
+                    .strength(-1f).explosionResistance(15).noLootTable().sound(SoundType.WOOL)));
 
     public static final DeferredBlock<Block> LEVEL_0_CARPET = registerBlock("level_0_flooring",
             () -> new Block(BlockBehaviour.Properties.of()
-                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.WOOD)));
+                    .strength(-1f).explosionResistance(Float.MAX_VALUE).sound(SoundType.WOOD)));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);

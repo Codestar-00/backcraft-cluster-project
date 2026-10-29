@@ -1,5 +1,9 @@
 {
   "item.clusterprojectbackrooms.almondwater": "Almond Water",
 
-  "block.clusterprojectbackrooms.yellow_wallpaper": "Yellow Wallpaper"
+  "block.clusterprojectbackrooms.yellow_wallpaper": "Yellow Wallpaper",
+  "block.clusterprojectbackrooms.level_0_flooring": "Level 0 Flooring",
+
+  "creativetab.backroomsmod.backrooms_common_items_tab": "Backrooms Common Items",
+  "creativetab.backroomsmod.level_0_blocks_tab": "Level 0 Blocks"
 }
